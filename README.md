@@ -17,8 +17,6 @@ Drone komuta-kontrol (C2) sinyali, insansız hava aracı (İHA) ile operatörü 
 - **MAVLink / ArduPilot / PX4**: Açık kaynak yazılımlar; MAVLink2 ile paket imzalama ve güvenli telemetri.
 
 ## 4. Potansiyel Zaafiyetler ve Nasıl Sömürülür (Araştırma Perspektifi)
-> Bu bölüm akademik ve laboratuvar amaçlıdır. İzinsiz kullanım yasadışıdır.
-
 - **Şifreleme/Kimlik Doğrulama Eksikliği**: MAVLink 1.0 paketleri şifrelenmemiştir, sniffing ile paketler analiz edilebilir.
 - **Yan Kanal ve Fiziksel Erişim**: Debug portları veya firmware ekstraları tersine mühendislik ile veri açığa çıkarabilir.
 - **Uygulama/SDK/Telemetri Sızıntıları**: Mobil uygulamalar veya cloud servisleri üzerinden operasyonel bilgi toplanabilir.
