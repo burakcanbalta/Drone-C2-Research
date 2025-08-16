@@ -1,5 +1,7 @@
 # Drone C2 Sinyalleri:
 
+![Ekran görüntüsü 2025-08-16 150957](https://github.com/user-attachments/assets/f59d46aa-fdd7-432c-85f2-34757ebe6eb9)
+
 ## 1. Özet
 Drone komuta-kontrol (C2) sinyali, insansız hava aracı (İHA) ile operatörü arasındaki iletişimi sağlayan radyo frekansı (RF) sinyalleridir. Bu sinyaller, drone yönlendirme, telemetri verilerinin iletilmesi ve video akışını içerir. Amaçlar arasında operasyonel farkındalık, güvenlik, adli inceleme ve savunma yer alır.
 
