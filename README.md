@@ -1,60 +1,95 @@
-# Drone C2 Sinyalleri:
+---
+title: "Görünmeyen Bağlantılar: Bir Güvenlik Araştırmacısının Gözünden Drone Komuta-Kontrol (C2) Haberleşmesi ve Modern RF Güvenliği"
+author: Burak Balta
+description: Drone komuta-kontrol (C2) haberleşmesinin çalışma prensipleri, RF mimarisi, telemetri, modern güvenlik yaklaşımları ve kurumsal savunma perspektifine teknik bir bakış.
+tags:
+  - Drone
+  - UAV
+  - RF Security
+  - C2
+  - Cyber Security
+  - SDR
+  - Physical Security
+readingTime: "25-30 min"
+---
 
-![Ekran görüntüsü 2025-08-16 150957](https://github.com/user-attachments/assets/f59d46aa-fdd7-432c-85f2-34757ebe6eb9)
+# Görünmeyen Bağlantılar
 
-## 1. Özet
-Drone komuta-kontrol (C2) sinyali, insansız hava aracı (İHA) ile operatörü arasındaki iletişimi sağlayan radyo frekansı (RF) sinyalleridir. Bu sinyaller, drone yönlendirme, telemetri verilerinin iletilmesi ve video akışını içerir. Amaçlar arasında operasyonel farkındalık, güvenlik, adli inceleme ve savunma yer alır.
+## Bir Güvenlik Araştırmacısının Gözünden Drone Komuta-Kontrol (C2) Haberleşmesi ve Modern RF Güvenliği
 
-## 2. Ne İşe Yarar?
-- Drone uçuşlarını yönetir ve kontrol eder.
-- Telemetri ve sensör verilerini operatöre iletir.
-- Video ve multimedya akışını sağlar.
-- Kritik görevlerde operasyonel kontrol sağlar.
-- Operatör ile drone arasındaki iletişimi güvenli ve sürekli tutar.
+> **Not**
+>
+> Bu makale, insansız hava araçlarının komuta-kontrol (Command & Control - C2) altyapısını savunma perspektifinden ele almaktadır. Amaç; drone haberleşme mimarisini, kullanılan kablosuz teknolojileri, kurumsal güvenlik risklerini ve modern savunma yaklaşımlarını teknik temelleriyle açıklamaktır.
+>
+> Makalede yer verilen bilgiler yalnızca güvenlik araştırmaları, savunma çalışmaları, akademik incelemeler ve yetkili güvenlik değerlendirmeleri kapsamında değerlendirilmelidir.
 
-## 3. Frekanslar ve Protokoller
-- **2.4 GHz / 5.8 GHz**: Yaygın uplink/downlink bantları.
-- **433 MHz / 900 MHz / LoRa**: Uzun menzil telemetri ve kontrol için.
-- **Proprietary protokoller (DJI OcuSync / Lightbridge)**: Özel şifreleme ve kimlik doğrulama içerir.
-- **MAVLink / ArduPilot / PX4**: Açık kaynak yazılımlar; MAVLink2 ile paket imzalama ve güvenli telemetri.
+---
 
-## 4. Potansiyel Zaafiyetler ve Nasıl Sömürülür (Araştırma Perspektifi)
-- **Şifreleme/Kimlik Doğrulama Eksikliği**: MAVLink 1.0 paketleri şifrelenmemiştir, sniffing ile paketler analiz edilebilir.
-- **Yan Kanal ve Fiziksel Erişim**: Debug portları veya firmware ekstraları tersine mühendislik ile veri açığa çıkarabilir.
-- **Uygulama/SDK/Telemetri Sızıntıları**: Mobil uygulamalar veya cloud servisleri üzerinden operasyonel bilgi toplanabilir.
-- **GPS Spoofing / Jamming**: Konum doğrulama eksikliği drone'un yönlendirmesini bozabilir.
-- **Firmware Güncelleme ve Tedarik Zinciri Açıkları**: Manipüle edilmiş firmware veya update paketleri laboratuvar ortamında analiz edilebilir.
+## Kapak Görseli
 
-## 5. Savunma ve Tespit Yöntemleri
-- **RF Spektrum Analizi**: SDR ve spektrum analiz cihazları ile bant taraması.
-- **Akustik ve Radar Algılama**: Drone fiziksel varlığı tespiti.
-- **Telemetri Güvenliği**: MAVLink2 paket imzalama ve şifreleme.
-- **Operasyonel Önlemler**: Geofencing, no-fly zone, SHGM izin süreçleri.
-- **Yasal Yetki**: Jammer veya frekans bozucular izinsiz kullanılamaz.
+**Şekil 1.** Modern bir insansız hava aracının yer kontrol istasyonu ile haberleşmesini gösteren konsept görsel. Arka planda RF spektrumu, telemetri verileri ve dijital ağ mimarisini temsil eden soyut görselleştirme kullanılabilir.
 
-## 6. AR-GE / Laboratuvar Çalışmaları
-- SHGM ve BTK izinleri alın.
-- Kapalı ve izole test alanları oluşturun.
-- Sadece tespit ve analiz; istismar yasadışıdır.
-- Araçlar: SDR, spektrum analiz cihazları, tersine mühendislik yazılımları.
-- Bulgular akademik veya endüstri raporlarında paylaşılabilir.
+---
 
-## 7. Yasal Çerçeve (Türkiye)
-- **TCK**: Haberleşmenin gizliliğini ihlal suçtur.
-- **SHGM**: 500g üzeri drone uçuşları kayıt ve izin zorunlu.
-- **BTK**: Frekans tahsisi ve geçici kullanım düzenlenir.
-- **Jammer/karıştırıcılar**: İzinsiz kullanılamaz.
+# Giriş
 
-## 8. Kurumsal Savunma Önerileri
-- Firmware ve uygulamaları güncel tutun.
-- Kritik tesislerde uçuş planı ve fiziksel kontrol mekanizmaları oluşturun.
-- Yetkisiz drone tespitinde güvenlik ve otoritelerle koordinasyon, adli delil toplama.
-- Personel eğitimleri: drone tehditleri ve yetkili prosedürler.
+> *"Bir drone'u havada tutan yalnızca motorları ve pervaneleri değildir. Onu operatörüne bağlayan görünmez radyo frekansı bağlantısı, modern insansız hava aracı ekosisteminin en kritik bileşenidir."*
 
-## 9. Kaynaklar
-- TCK Haberleşmenin Gizliliği (Avukat Baran Doğan)
-- SHGM SHT-İHA ve kayıt talimatları (iha.shgm.gov.tr)
-- BTK Telsiz ve frekans düzenlemeleri
-- MAVLink2 signing (ArduPilot / Mission Planner)
-- DJI güvenlik analizleri (NDSS, arXiv)
-- Dedrone, DroneShield (C-UAS tespit sistemleri)
+İnsansız hava araçları (İHA), son on yıl içerisinde yalnızca askeri operasyonların değil; sivil havacılık, endüstriyel denetim, enerji sektörü, lojistik, tarım, afet yönetimi ve kamu güvenliği gibi birçok alanın da vazgeçilmez teknolojileri arasında yerini aldı. Gelişen batarya teknolojileri, daha güçlü uçuş kontrol sistemleri ve düşük maliyetli elektronik bileşenler sayesinde bugün birkaç yüz gram ağırlığındaki ticari bir drone bile geçmişte yalnızca profesyonel platformlarda bulunan birçok yeteneğe sahip olabiliyor.
+
+Bu dönüşüm, beraberinde yeni güvenlik gereksinimlerini de ortaya çıkardı. Günümüzde bir drone yalnızca havada uçan elektronik bir cihaz değildir; sensörlerden, gömülü sistemlerden, kablosuz haberleşme protokollerinden, uydu navigasyon altyapılarından ve bulut servislerinden oluşan dağıtık bir bilgi işlem platformudur. Dolayısıyla güvenlik değerlendirmesi yalnızca hava aracının fiziksel bütünlüğüyle sınırlı kalmaz. Haberleşme altyapısı, yazılım bileşenleri, yer kontrol istasyonu, mobil uygulamalar ve kimlik doğrulama mekanizmaları da bu ekosistemin ayrılmaz parçalarıdır.
+
+Bir güvenlik araştırmacısı açısından değerlendirildiğinde ise asıl kritik unsur, drone ile operatörü arasında kesintisiz olarak sürdürülen komuta-kontrol (Command & Control – C2) haberleşmesidir. Uçuş komutları, telemetri bilgileri, kamera görüntüleri, sensör verileri ve görev parametreleri bu iletişim kanalı üzerinden aktarılır. C2 bağlantısının güvenilirliği, yalnızca operasyonun başarısını değil; platformun emniyetini, veri bütünlüğünü ve görev sürekliliğini de doğrudan etkiler.
+
+Modern drone sistemleri farklı haberleşme teknolojilerini aynı anda kullanabilir. Uçuş kontrol komutları bir RF bağlantısı üzerinden iletilirken, yüksek çözünürlüklü video akışı farklı bir kanal üzerinden taşınabilir. Aynı anda GNSS uydularından konum bilgisi alınabilir, LTE veya 5G altyapısı üzerinden bulut servislerine veri aktarılabilir ve görev kayıtları uzaktaki yönetim sistemleriyle senkronize edilebilir. Bu çok katmanlı yapı, operasyonel kabiliyetleri artırırken aynı zamanda saldırı yüzeyini de genişletmektedir.
+
+Bu nedenle günümüzde drone güvenliği yalnızca uçuş güvenliğiyle ilgili bir konu değildir. Kritik altyapıları koruyan kurumlar, güvenlik operasyon merkezleri (SOC), savunma sanayii kuruluşları ve kamu kurumları için drone haberleşmesinin güvenliği; fiziksel güvenlik, ağ güvenliği ve elektronik harp disiplinlerinin kesişim noktasında yer almaktadır.
+
+---
+
+# Neden Komuta-Kontrol (C2) Haberleşmesi Bu Kadar Kritik?
+
+Bir drone'un uçabilmesi için motorlarının çalışması yeterli değildir. Operatörden gelen komutların doğru şekilde iletilmesi, sensörlerden elde edilen verilerin geri aktarılması ve uçuş kontrol bilgisayarının bu bilgileri gerçek zamanlı olarak işlemesi gerekir.
+
+Komuta-kontrol bağlantısı kesildiğinde, platformun davranışı tamamen uçuş kontrol yazılımında tanımlanan güvenlik politikalarına bağlıdır. Bazı sistemler otomatik olarak kalkış noktasına geri dönerken (Return-to-Home), bazıları mevcut konumda beklemeyi tercih eder veya güvenli iniş prosedürünü başlatır. Bu karar mekanizmaları, yalnızca operasyonel gereksinimlere değil; güvenlik ve emniyet prensiplerine göre de tasarlanır.
+
+C2 haberleşmesinin güvenilirliği özellikle aşağıdaki senaryolarda kritik öneme sahiptir:
+
+- Kritik altyapıların havadan denetlenmesi
+- Elektrik iletim hatlarının kontrolü
+- Petrol ve doğal gaz tesislerinin incelenmesi
+- Arama ve kurtarma operasyonları
+- Afet yönetimi
+- Yangın gözlem faaliyetleri
+- Kamu güvenliği görevleri
+- Endüstriyel haritalama ve ölçüm çalışmaları
+
+Bu operasyonlarda haberleşme altyapısında meydana gelebilecek kesintiler yalnızca görev başarısını değil, çevresel güvenliği ve insan hayatını da etkileyebilir.
+
+Drone haberleşmesi bu nedenle yalnızca bir kablosuz iletişim problemi değil; yüksek erişilebilirlik, veri bütünlüğü, kimlik doğrulama ve operasyonel süreklilik gerektiren bütünleşik bir güvenlik problemidir.
+
+---
+
+# Bu Makalede Neleri İnceleyeceğiz?
+
+Bu yazıda drone güvenliğini yalnızca kablosuz haberleşme açısından değerlendirmeyeceğiz. Bunun yerine komuta-kontrol mimarisini uçtan uca ele alacağız.
+
+Makale boyunca aşağıdaki başlıklara değineceğiz:
+
+- Drone haberleşmesinin temel çalışma prensipleri
+- Komuta-kontrol (C2) mimarisi
+- RF haberleşmesinin fiziksel katmanı
+- Telemetri ve video veri akışları
+- Kullanılan frekans bantları ve standartlar
+- MAVLink, PX4 ve ArduPilot ekosistemi
+- Ticari drone haberleşme teknolojileri
+- Kriptografi ve güvenli haberleşme yaklaşımları
+- Tehdit modelleme ve kurumsal risk değerlendirmesi
+- RF tabanlı drone tespit sistemleri
+- Radar, akustik ve optik algılama yöntemleri
+- Yapay zekâ destekli drone tespit çözümleri
+- Counter-UAS ekosistemi
+- Türkiye'deki yasal düzenlemeler
+- Geleceğin drone haberleşme teknolojileri
+
+Makalenin amacı herhangi bir sistemi hedef alan saldırı yöntemlerini öğretmek değildir. Bunun yerine modern drone haberleşme mimarisini teknik açıdan inceleyerek savunma odaklı güvenlik yaklaşımını ortaya koymak, güvenlik araştırmacıları ve siber güvenlik profesyonelleri için kapsamlı bir başvuru kaynağı oluşturmaktır.
