@@ -2,22 +2,6 @@
 
 ---
 
-title: "Görünmeyen Bağlantılar: Bir Güvenlik Araştırmacısının Gözünden Drone Komuta-Kontrol (C2) Haberleşmesi ve Modern RF Güvenliği"
-author: Burak Balta
-description: Drone komuta-kontrol (C2) haberleşmesinin çalışma prensipleri, RF mimarisi, telemetri, modern güvenlik yaklaşımları ve kurumsal savunma perspektifine teknik bir bakış.
-tags:
-  - Drone
-  - UAV
-  - RF Security
-  - C2
-  - Cyber Security
-  - SDR
-  - Physical Security
-readingTime: "25-30 min"
----
-
-# Görünmeyen Bağlantılar
-
 ## Bir Güvenlik Araştırmacısının Gözünden Drone Komuta-Kontrol (C2) Haberleşmesi ve Modern RF Güvenliği
 
 > **Not**
