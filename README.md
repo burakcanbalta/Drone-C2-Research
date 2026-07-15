@@ -1,4 +1,6 @@
 <img width="637" height="421" alt="image" src="https://github.com/user-attachments/assets/12d7ef4f-05d5-43e5-a62e-80145bba83d7" />
+
+
 ---
 title: "Görünmeyen Bağlantılar: Bir Güvenlik Araştırmacısının Gözünden Drone Komuta-Kontrol (C2) Haberleşmesi ve Modern RF Güvenliği"
 author: Burak Balta
